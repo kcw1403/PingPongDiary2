@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="date_year">
+        <item>2014년</item>
+        <item>2015년</item>
+    </string-array>
+
+    <string-array name="rubber_type">
+        <item>상관없음</item>
+        <item>평면러버</item>
+        <item>숏핌플</item>
+        <item>롱핌플</item>
+        <item>안티러버</item>
+    </string-array>
+
+
+</resources>
