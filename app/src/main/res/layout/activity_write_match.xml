@@ -7,23 +7,54 @@
     tools:context=".WriteMatchActivity">
 
     <LinearLayout
-        android:id="@+id/selectLayout"
+        android:id="@+id/manageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="선수선택" />
+            android:layout_weight="1"
+            android:text="기록"
+            android:textSize="20sp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소"
+            android:textSize="20sp"
+            />
+
+
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/nameLayout"
+    android:id="@+id/nameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/manageLayout">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="상대선수명"
+        android:layout_weight="1"
+        android:textSize="20sp"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/clubNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/selectLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -41,7 +72,7 @@
         android:id="@+id/rankLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/clubNameLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -76,7 +107,7 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/rubberLayout"
+        android:id="@+id/frontRubberLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/handLayout">
@@ -93,10 +124,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/backRubberLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frontRubberLayout">
+
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="앞 러버"
+            android:text="뒷 러버"
             android:layout_weight="1"
             android:textSize="20sp"/>
         <Spinner
@@ -106,12 +146,11 @@
             android:layout_weight="1"
             />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/scoreLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rubberLayout">
+        app:layout_constraintTop_toBottomOf="@+id/backRubberLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -166,28 +205,5 @@
         />
 </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/manageLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/reviewLayout">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="기록"
-            android:textSize="20sp"
-        />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="취소"
-            android:textSize="20sp"
-            />
 
-
-
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
