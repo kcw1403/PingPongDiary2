@@ -14,6 +14,7 @@
         android:orientation="horizontal"
         >
         <Button
+            android:id="@+id/saveMatchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -21,6 +22,7 @@
             android:textSize="20sp"
             />
         <Button
+            android:id="@+id/cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,6 +47,7 @@
         android:layout_weight="1"
         android:textSize="20sp"/>
     <EditText
+        android:id="@+id/nameBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -59,10 +62,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="상대선수명"
+            android:text="소속"
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
+            android:id="@+id/clubNameBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,8 +85,30 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
+            android:id="@+id/rankBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/handyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rankLayout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="핸디"
+            android:layout_weight="1"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/handyScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="받을 때 + 줄 때 -"
             android:layout_weight="1"
             android:inputType="number"
             />
@@ -91,7 +117,7 @@
         android:id="@+id/handLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rankLayout">
+        app:layout_constraintTop_toBottomOf="@+id/handyLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -164,6 +190,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:inputType="number"
             />
         <TextView
@@ -176,6 +203,7 @@
             android:id="@+id/rose_set"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
             android:inputType="number"
         />
@@ -196,13 +224,15 @@
         />
 
     <EditText
+        android:id="@+id/reviewBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text|textMultiLine"
         android:lines="8"
+        android:hint="경기 내용 복기"
         android:minLines="10"
         android:maxLines="12"
-        android:text=""
+        android:gravity="top"
         />
 </LinearLayout>
 
