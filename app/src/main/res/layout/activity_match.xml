@@ -34,6 +34,7 @@
             />
 
         <Button
+            android:id="@+id/searchBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -64,13 +65,19 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
-            android:text="펜홀더"/>
+            android:text="일펜"/>
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
             android:text="쉐이크"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textSize="20sp"
+            android:text="중펜"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/rubberLayout"
@@ -85,6 +92,7 @@
             android:text="앞 러버"
             />
         <Spinner
+            android:id="@+id/frontRubber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -97,6 +105,7 @@
             android:textSize="20sp"
             />
         <Spinner
+            android:id="@+id/backRubber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

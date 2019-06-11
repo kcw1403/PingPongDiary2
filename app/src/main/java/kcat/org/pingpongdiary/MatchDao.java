@@ -38,9 +38,11 @@ public class MatchDao {
         }
 
     }
-    public ArrayList<MatchDto> select() {
+
+    public ArrayList<MatchDto> select(String s_name,int s_handType, int s_racketType, int s_fRubber, int s_bRubber) {
         ArrayList<MatchDto> list = new ArrayList<MatchDto>();
-        list = db.select();
+
+        list = db.select(s_name,s_handType,s_racketType,s_fRubber,s_bRubber);
         return list;
 
     }

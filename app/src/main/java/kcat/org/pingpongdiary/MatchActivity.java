@@ -15,6 +15,11 @@ public class MatchActivity extends AppCompatActivity {
 
     private ListView listView;
     MatchDao matchDao;
+    String s_name;
+    int s_handType;
+    int s_racketType;
+    int s_fRubber;
+    int s_bRubber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +43,11 @@ public class MatchActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<MatchDto> dataList = matchDao.select();
+        ArrayList<MatchDto> dataList = matchDao.select( s_name, s_handType,  s_racketType,  s_fRubber,  s_bRubber );
         ArrayAdapter<String> adapter;
+
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
-
         for(MatchDto s : dataList) {
             adapter.add(s.getName() + "승 : ");
         }
