@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
+        android:focusable="true"
         >
         <TextView
             android:layout_width="0dp"
@@ -29,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="입력하세요"
+
             />
 
         <Button
@@ -144,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@+id/infoLayout">
 
         <ListView
-            android:id="@+id/mathList"
+            android:id="@+id/matchList"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:scrollbars="vertical" />
@@ -160,12 +162,14 @@
         app:layout_constraintTop_toBottomOf="@+id/matchListLayout">
 
         <Button
+            android:id="@+id/registerMatch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="경기등록" />
 
         <Button
+            android:id="@+id/delMatch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

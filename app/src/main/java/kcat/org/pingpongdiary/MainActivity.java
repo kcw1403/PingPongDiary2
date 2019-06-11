@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.manageMatch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,WriteMatchActivity.class);
+                Intent i = new Intent(MainActivity.this,MatchActivity.class);
                 startActivity(i);
             }
         });
