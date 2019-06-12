@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:hint="받을 때 + 줄 때 -"
             android:layout_weight="1"
-            android:inputType="number"
+            android:inputType="numberDecimal|numberSigned"
             />
     </LinearLayout>
     <LinearLayout

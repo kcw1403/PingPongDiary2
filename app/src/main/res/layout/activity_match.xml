@@ -149,7 +149,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/matchListLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/infoLayout"
         app:layout_constraintTop_toBottomOf="@+id/infoLayout">
@@ -158,6 +158,7 @@
             android:id="@+id/matchList"
             android:layout_width="match_parent"
             android:layout_height="500dp"
+
             android:scrollbars="vertical" />
     </LinearLayout>
 

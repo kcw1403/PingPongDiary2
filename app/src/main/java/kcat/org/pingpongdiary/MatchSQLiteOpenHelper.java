@@ -77,9 +77,13 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
             String clubMame = c.getString(c.getColumnIndex("club_name"));
             matchDto.setClubName(clubMame);
-
             String writeDate = c.getString(c.getColumnIndex("match_date"));
             matchDto.setMatchDate(writeDate);
+
+            int winSet = c.getInt(c.getColumnIndex("win_set"));
+            matchDto.setWinSet(winSet);
+            int roseSet = c.getInt(c.getColumnIndex("rose_set"));
+            matchDto.setRoseSet(roseSet);
             list.add(matchDto);
         }
 

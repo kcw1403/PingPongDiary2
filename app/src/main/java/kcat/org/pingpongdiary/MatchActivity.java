@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,19 +38,22 @@ public class MatchActivity extends AppCompatActivity {
         findViewById(R.id.delMatch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 //Toast.makeText(MatchActivity.this,data.size()+"",Toast.LENGTH_SHORT).show();
             }
         });
 
         ArrayList<MatchDto> dataList = matchDao.select( s_name, s_handType,  s_racketType,  s_fRubber,  s_bRubber );
-        ArrayAdapter<String> adapter;
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(adapter);
-        for(MatchDto s : dataList) {
-            adapter.add(s.getName() + "승 : ");
+        MyAdapter myAdapter = new MyAdapter();
+
+
+        for(MatchDto matchDto : dataList) {
+         //   adapter.add("이름 : "+s.getName() + "세트 :"+s.getWinSet()+"승 "+ s.getRoseSet()+"패");
+            myAdapter.addItem(matchDto);
         }
+
+        listView = (ListView)findViewById(R.id.matchList);
+        listView.setAdapter(myAdapter);
+
     }
 }
