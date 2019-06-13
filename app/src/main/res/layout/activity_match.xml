@@ -125,7 +125,9 @@
             android:textSize="20sp"
             android:text="전적"
             />
+
         <TextView
+            android:id="@+id/tv_recordBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -140,6 +142,7 @@
             android:text="승률"
             />
         <TextView
+            android:id="@+id/tv_winRecord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

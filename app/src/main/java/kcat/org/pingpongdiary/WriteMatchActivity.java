@@ -129,7 +129,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
 
                 review =((EditText)findViewById(R.id.reviewBox)).getText().toString();
 
-                Toast.makeText(WriteMatchActivity.this,String.valueOf(hand)+","+String.valueOf(frontRubber)+","+String.valueOf(backRubber),Toast.LENGTH_SHORT).show();
+
                 if(name.equals(""))
                 {
                     Toast.makeText(WriteMatchActivity.this,"이름을 입력해주세요",Toast.LENGTH_SHORT).show();
@@ -150,6 +150,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
                     //e.printStackTrace();
                 }
 
+                Toast.makeText(WriteMatchActivity.this,"등록되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
 

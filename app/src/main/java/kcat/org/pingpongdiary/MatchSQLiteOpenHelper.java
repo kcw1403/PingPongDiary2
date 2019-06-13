@@ -50,6 +50,10 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
+    public int delete(int id)
+    {
+        return db.delete("MATCH_TABLE", "_id = ?", new String[]{String.valueOf(id)});
+    }
 
     public long insert(String table, ContentValues values) {
         return db.insert(table, null, values);
@@ -70,7 +74,7 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
         while (c.moveToNext()) {
             MatchDto matchDto = new MatchDto();
-            int id = c.getColumnIndex("_id");
+            int id = c.getInt(c.getColumnIndex("_id"));
             matchDto.setId(id);
             String name = c.getString(c.getColumnIndex("name"));
             matchDto.setName(name);

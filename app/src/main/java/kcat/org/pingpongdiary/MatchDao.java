@@ -32,19 +32,24 @@ public class MatchDao {
         values.put("match_date", matchDto.getMatchDate());
         values.put("review", matchDto.getReview());
 
-        long rowId = db.insert("MATCH_TABLE",values);
+        long rowId = db.insert("MATCH_TABLE", values);
         if (rowId < 0) {
             throw new SQLException("Fail At Insert");
         }
 
     }
 
-    public ArrayList<MatchDto> select(String s_name,int s_handType, int s_racketType, int s_fRubber, int s_bRubber) {
+    public ArrayList<MatchDto> select(String s_name, int s_handType, int s_racketType, int s_fRubber, int s_bRubber) {
         ArrayList<MatchDto> list = new ArrayList<MatchDto>();
 
-        list = db.select(s_name,s_handType,s_racketType,s_fRubber,s_bRubber);
+        list = db.select(s_name, s_handType, s_racketType, s_fRubber, s_bRubber);
         return list;
 
+    }
+
+    public int delete(int id)
+    {
+        return db.delete(id);
     }
 
 

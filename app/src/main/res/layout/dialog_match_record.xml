@@ -1,63 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WriteMatchActivity">
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+
+
 
     <LinearLayout
-        android:id="@+id/manageLayout"
+
+        android:id="@+id/nameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/saveMatchBtn"
-            android:layout_width="wrap_content"
+        android:layout_weight="1"
+       >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="상대선수명"
+            android:layout_weight="1"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/et_nameBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="기록"
-            android:textSize="20sp"
             />
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="취소"
-            android:textSize="20sp"
-            />
-
-
-
     </LinearLayout>
-
-    <LinearLayout
-    android:id="@+id/nameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@+id/manageLayout">
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="상대선수명"
-        android:layout_weight="1"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/nameBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-</LinearLayout>
     <LinearLayout
         android:id="@+id/clubNameLayout"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+      >
 
         <TextView
             android:layout_width="0dp"
@@ -66,7 +43,7 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
-            android:id="@+id/clubNameBox"
+            android:id="@+id/et_clubNameBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,7 +53,8 @@
         android:id="@+id/rankLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/clubNameLayout">
+        android:layout_weight="1"
+      >
 
         <TextView
             android:layout_width="0dp"
@@ -85,7 +63,7 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
-            android:id="@+id/rankBox"
+            android:id="@+id/et_rankBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -95,8 +73,8 @@
     <LinearLayout
         android:id="@+id/handyLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rankLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -117,8 +95,8 @@
     <LinearLayout
         android:id="@+id/handLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/handyLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -137,8 +115,8 @@
     <LinearLayout
         android:id="@+id/racketTypeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/handLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -157,8 +135,8 @@
     <LinearLayout
         android:id="@+id/frontRubberLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/racketTypeLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -177,8 +155,8 @@
     <LinearLayout
         android:id="@+id/backRubberLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/frontRubberLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -197,14 +175,14 @@
     <LinearLayout
         android:id="@+id/scoreLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/backRubberLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="승리 세트 수"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:textSize="20sp"/>
         <EditText
             android:id="@+id/win_set"
@@ -218,7 +196,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="패배 세트 수"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:textSize="20sp"/>
         <EditText
             android:id="@+id/rose_set"
@@ -227,14 +205,14 @@
             android:gravity="center"
             android:layout_weight="1"
             android:inputType="number"
-        />
+            />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dateLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/scoreLayout">
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="0dp"
@@ -253,31 +231,58 @@
             />
     </LinearLayout>
     <LinearLayout
-    android:id="@+id/reviewLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintTop_toBottomOf="@+id/dateLayout">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="복기"
-        android:textSize="20sp"
-        />
-
-    <EditText
-        android:id="@+id/reviewBox"
+        android:id="@+id/reviewLayout"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:inputType="text|textMultiLine"
-        android:lines="8"
-        android:hint="경기 내용 복기"
-        android:minLines="10"
-        android:maxLines="12"
-        android:gravity="top"
-        />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="복기"
+            android:textSize="20sp"
+            />
+
+        <EditText
+            android:id="@+id/reviewBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textMultiLine"
+            android:lines="8"
+            android:hint="경기 내용 복기"
+            android:minLines="10"
+            android:maxLines="12"
+            android:gravity="top"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/modifyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수정"
+            android:textSize="25sp"
+            />
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="삭제"
+            android:textSize="25sp"
+            />
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="닫기"
+            android:textSize="25sp"
+            />
+
+    </LinearLayout>
 </LinearLayout>
-
-
-</android.support.constraint.ConstraintLayout>
