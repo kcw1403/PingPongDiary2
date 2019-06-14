@@ -36,14 +36,14 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     public MatchSQLiteOpenHelper(Context context) {
-        super(context, "PINGPONG_DB", null, 1);
+        super(context, "PINGPONG_DB", null, 2);
         this.context = context;
         // TODO Auto-generated constructor stub
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        String sql = "CREATE TABLE MATCH_TABLE(_id INTEGER PRIMARY KEY autoincrement,  name TEXT, club_name TEXT, rank INTEGER, handy INTEGER, racket_type INTEGER, front_rubber INTEGER, back_rubber INTEGER, win_set INTEGER, rose_set INTEGER, match_date TEXT, review TEXT);";
+        String sql = "CREATE TABLE MATCH_TABLE(_id INTEGER PRIMARY KEY autoincrement,  name TEXT, club_name TEXT, rank INTEGER, handy INTEGER,hand_type INTEGER, racket_type INTEGER, front_rubber INTEGER, back_rubber INTEGER, win_set INTEGER, rose_set INTEGER, match_date TEXT, review TEXT);";
 
         db.execSQL(sql);
         Toast.makeText(context,"Success Create Match Table",Toast.LENGTH_SHORT).show();
@@ -58,6 +58,11 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
     public long insert(String table, ContentValues values) {
         return db.insert(table, null, values);
     }
+    public long update(String table, ContentValues values)
+    {
+        return db.update(table,values,"_id = ?",new String[]{String.valueOf(values.get("_id"))});
+    }
+
     public ArrayList<MatchDto> select(String s_name,int s_handType, int s_racketType, int s_fRubber, int s_bRubber ) {
         ArrayList<MatchDto> list = new ArrayList<MatchDto>();
 
@@ -81,14 +86,36 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
             String clubMame = c.getString(c.getColumnIndex("club_name"));
             matchDto.setClubName(clubMame);
-            String writeDate = c.getString(c.getColumnIndex("match_date"));
-            matchDto.setMatchDate(writeDate);
+
+            int rank =  c.getInt(c.getColumnIndex("rank"));
+            matchDto.setRank(rank);
+            int handy = c.getInt(c.getColumnIndex("handy"));
+            matchDto.setHandy(handy);
+
+            int handType = c.getInt(c.getColumnIndex("hand_type"));
+            matchDto.setHandType(handType);
+
+            int racketType = c.getInt(c.getColumnIndex("racket_type"));
+            matchDto.setRacket_type(racketType);
+
+            int frontRubber = c.getInt(c.getColumnIndex("front_rubber"));
+            matchDto.setFrontRubber(frontRubber);
+
+            int backRubber = c.getInt(c.getColumnIndex("back_rubber"));
+            matchDto.setBackRubber(backRubber);
 
             int winSet = c.getInt(c.getColumnIndex("win_set"));
             matchDto.setWinSet(winSet);
             int roseSet = c.getInt(c.getColumnIndex("rose_set"));
             matchDto.setRoseSet(roseSet);
             list.add(matchDto);
+
+            String writeDate = c.getString(c.getColumnIndex("match_date"));
+            matchDto.setMatchDate(writeDate);
+
+            String review = c.getString(c.getColumnIndex("review"));
+            matchDto.setReview(review);
+
         }
 
         return list;
@@ -101,11 +128,12 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
         String sql = "drop table if exists MATCH_TABLE";
         db.execSQL(sql);
+        onCreate(db);
 //        String sql2 = "drop table if exists SCORE_TABLE_HARD";
 //        db.execSQL(sql2);
 //        String sql3 = "drop table if exists ACHIEVEMENT_TABLE";
 //        db.execSQL(sql3);
-//        onCreate(db);
+//
     }
 
 }

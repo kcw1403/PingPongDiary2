@@ -24,6 +24,7 @@ public class MatchDao {
         values.put("club_name", matchDto.getClubName());
         values.put("rank", matchDto.getRank());
         values.put("handy", matchDto.getHandy());
+        values.put("hand_type", matchDto.getHandType());
         values.put("racket_type", matchDto.getRacket_type());
         values.put("front_rubber", matchDto.getFrontRubber());
         values.put("back_rubber", matchDto.getBackRubber());
@@ -44,7 +45,28 @@ public class MatchDao {
 
         list = db.select(s_name, s_handType, s_racketType, s_fRubber, s_bRubber);
         return list;
+    }
+    public void update(MatchDto matchDto)throws SQLException {
+        ContentValues values = new ContentValues();
 
+        values.put("_id",matchDto.getId());
+        values.put("name", matchDto.getName());
+        values.put("club_name", matchDto.getClubName());
+        values.put("rank", matchDto.getRank());
+        values.put("handy", matchDto.getHandy());
+        values.put("hand_type", matchDto.getHandType());
+        values.put("racket_type", matchDto.getRacket_type());
+        values.put("front_rubber", matchDto.getFrontRubber());
+        values.put("back_rubber", matchDto.getBackRubber());
+        values.put("win_set", matchDto.getWinSet());
+        values.put("rose_set", matchDto.getRoseSet());
+        values.put("match_date", matchDto.getMatchDate());
+        values.put("review", matchDto.getReview());
+
+        long rowId = db.update("MATCH_TABLE", values);
+        if (rowId < 0) {
+            throw new SQLException("Fail At Insert");
+        }
     }
 
     public int delete(int id)

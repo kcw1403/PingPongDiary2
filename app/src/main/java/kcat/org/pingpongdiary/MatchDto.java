@@ -1,11 +1,17 @@
 package kcat.org.pingpongdiary;
 
-public class MatchDto {
+import java.io.Serializable;
+
+public class MatchDto implements Serializable {
     private int id;
     private String name;
     private String clubName;
     private int rank;
     private int handy;
+    private int handType;
+
+
+
     private int racket_type;
     private int frontRubber;
     private int backRubber;
@@ -20,12 +26,13 @@ public class MatchDto {
 
     }
 
-    MatchDto(String name, String clubName, int rank, int handy, int racket_type, int frontRubber, int backRubber, int winSet, int roseSet, String matchDate, String review)
+    MatchDto(String name, String clubName, int rank, int handy,int handType, int racket_type, int frontRubber, int backRubber, int winSet, int roseSet, String matchDate, String review)
     {
         this.name = name;
         this.clubName =clubName;
         this.rank = rank;
         this.handy = handy;
+        this.handType = handType;
         this.racket_type = racket_type;
         this.frontRubber = frontRubber;
         this.backRubber = backRubber;
@@ -131,5 +138,13 @@ public class MatchDto {
 
     public void setRacket_type(int racket_type) {
         this.racket_type = racket_type;
+    }
+
+    public int getHandType() {
+        return handType;
+    }
+
+    public void setHandType(int handType) {
+        this.handType = handType;
     }
 }

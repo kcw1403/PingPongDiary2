@@ -4,20 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".MatchRecord">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <LinearLayout
-
         android:id="@+id/nameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-       >
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,19 +19,17 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
-            android:id="@+id/et_nameBox"
+            android:id="@+id/nameBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp"
             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/clubNameLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
-      >
+        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -46,19 +38,17 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
-            android:id="@+id/et_clubNameBox"
+            android:id="@+id/clubNameBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp"
             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/rankLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-      >
+        app:layout_constraintTop_toBottomOf="@+id/clubNameLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -67,19 +57,17 @@
             android:layout_weight="1"
             android:textSize="20sp"/>
         <EditText
-            android:id="@+id/et_rankBox"
+            android:id="@+id/rankBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="number"
-            android:textSize="18sp"
-            />
+            android:inputType="number" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/handyLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rankLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -89,7 +77,7 @@
             android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/et_handyScore"
+            android:id="@+id/handyScore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="받을 때 + 줄 때 -"
@@ -100,8 +88,8 @@
     <LinearLayout
         android:id="@+id/handLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/handyLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -120,8 +108,8 @@
     <LinearLayout
         android:id="@+id/racketTypeLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/handLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -140,8 +128,8 @@
     <LinearLayout
         android:id="@+id/frontRubberLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/racketTypeLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -160,8 +148,8 @@
     <LinearLayout
         android:id="@+id/backRubberLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/frontRubberLayout">
 
 
         <TextView
@@ -174,35 +162,35 @@
             android:id="@+id/back_rubber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/scoreLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/backRubberLayout">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="승리 세트 수"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="20sp"/>
+
         <EditText
             android:id="@+id/win_set"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            />
+            android:inputType="number"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="패배 세트 수"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="20sp"/>
+
         <EditText
             android:id="@+id/rose_set"
             android:layout_width="0dp"
@@ -216,8 +204,8 @@
     <LinearLayout
         android:id="@+id/dateLayout"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/scoreLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -232,22 +220,20 @@
             android:layout_weight="1"
             android:clickable="true"
             android:inputType="none"
-            android:focusable="false"
-            />
+            android:focusable="false"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/reviewLayout"
         android:layout_width="match_parent"
-        android:layout_weight="7"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/dateLayout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="복기"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp"/>
 
         <EditText
             android:id="@+id/reviewBox"
@@ -256,15 +242,18 @@
             android:inputType="text|textMultiLine"
             android:lines="8"
             android:hint="경기 내용 복기"
-            android:minLines="10"
-            android:maxLines="12"
+            android:minLines="8"
+            android:maxLines="10"
             android:gravity="top"
             />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/manageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.3">
+        app:layout_constraintTop_toBottomOf="@id/reviewLayout"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/modifyBtn"
             android:layout_width="wrap_content"
@@ -282,7 +271,7 @@
             android:textSize="25sp"
             />
         <Button
-            android:id="@+id/cancelBtn"
+            android:id="@+id/closeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -290,6 +279,5 @@
             android:textSize="25sp"
             />
 
-    </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

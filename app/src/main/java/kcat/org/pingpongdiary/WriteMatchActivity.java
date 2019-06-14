@@ -35,7 +35,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
     String clubName;
     int rank;
     int handy;
-    int hand;
+    int handType;
     int racketType;
     int frontRubber;
     int backRubber;
@@ -106,7 +106,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
                 else
                     handy = 0;
 
-                hand = handSpinner.getSelectedItemPosition();
+                handType = handSpinner.getSelectedItemPosition();
                 frontRubber = fRubberSpinner.getSelectedItemPosition();
                 backRubber = bRubberSpinner.getSelectedItemPosition();
                 racketType = racketSpinner.getSelectedItemPosition();
@@ -141,7 +141,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
                     return;
                 }
                 //MatchDto(String name,String clubName,int rank, int handy, int frontRubber, int backRubber, int winSet, int roseSet, String matchDate, String review)
-                MatchDto matchDto = new MatchDto(name,clubName,rank,handy,racketType,frontRubber,backRubber,winSet,roseSet,matchDate,review);
+                MatchDto matchDto = new MatchDto(name,clubName,rank,handy, handType, racketType,frontRubber,backRubber,winSet,roseSet,matchDate,review);
 
                 try {
                     matchDao.insert(matchDto);
@@ -182,7 +182,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if(adapterView.getId() == handSpinner.getId())
         {
-            Toast.makeText(this,adapterView.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+         //   Toast.makeText(this,adapterView.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
         }
     }
 

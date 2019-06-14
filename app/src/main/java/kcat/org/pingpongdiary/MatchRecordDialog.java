@@ -11,15 +11,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.sql.SQLException;
 
 public class MatchRecordDialog extends Dialog implements  AdapterView.OnItemSelectedListener{
 
     private Button mPositiveButton;
     private Button mNegativeButton;
+
+
+
     private Button mNetralButton;
     private View.OnClickListener mPositiveListener;
     private View.OnClickListener mNegativeListener;
     private View.OnClickListener mNetralListener;
+    private int id;
 
     Spinner handSpinner;
     Spinner fRubberSpinner;
@@ -29,11 +36,84 @@ public class MatchRecordDialog extends Dialog implements  AdapterView.OnItemSele
     String[] rubberTypeItem = new String[]{"평면러버","숏핌플","롱핌플","안티러버"};
     String[] racketTypeItem = new String[]{"세이크","일펜","중펜"};
 
+    public MatchDto getMatchDto() {
+        return matchDto;
+    }
+
     private MatchDto matchDto;
 
     public MatchRecordDialog(@NonNull Context context, MatchDto matchDto) {
         super(context);
         this.matchDto = matchDto;
+        id = matchDto.getId();
+    }
+    public MatchRecordDialog(@NonNull Context context, MatchDto matchDto,View.OnClickListener positiveListener,View.OnClickListener negativeListener,View.OnClickListener netralListener) {
+        super(context);
+        this.matchDto = matchDto;
+        this.mPositiveListener = positiveListener;
+        this.mNegativeListener = negativeListener;
+        this.mNetralListener = netralListener;
+        id = matchDto.getId();
+    }
+    public int SaveData()
+    {
+        String name =((EditText)findViewById(R.id.et_nameBox)).getText().toString();
+        String clubName =((EditText)findViewById(R.id.et_clubNameBox)).getText().toString();
+        String matchDate =((EditText)findViewById(R.id.matchDateBox)).getText().toString();
+
+        int rank = 100;
+        if(!(((EditText) findViewById(R.id.et_rankBox)).getText().toString().equals("")))
+            rank = Integer.parseInt(((EditText) findViewById(R.id.et_rankBox)).getText().toString());
+        else
+            rank = 100;
+
+        int handy = 0;
+        if(!(((EditText) findViewById(R.id.et_handyScore)).getText().toString().equals("")))
+            handy = Integer.parseInt(((EditText) findViewById(R.id.et_handyScore)).getText().toString());
+        else
+            handy = 0;
+
+
+        int handType = handSpinner.getSelectedItemPosition();
+        int frontRubber = fRubberSpinner.getSelectedItemPosition();
+        int backRubber = bRubberSpinner.getSelectedItemPosition();
+        int racketType = racketSpinner.getSelectedItemPosition();
+
+        int winSet = 0;
+        if(!(((EditText) findViewById(R.id.win_set)).getText().toString().equals("")))
+            winSet = Integer.parseInt(((EditText) findViewById(R.id.win_set)).getText().toString());
+
+
+        int roseSet = 0;
+        if(!(((EditText) findViewById(R.id.rose_set)).getText().toString().equals("")))
+            roseSet = Integer.parseInt(((EditText) findViewById(R.id.rose_set)).getText().toString());
+
+
+        if(winSet == 0 && roseSet == 0 )
+        {
+            Toast.makeText(this.getContext(),"셋트를 제대로 입력해주세요",Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+
+        String review =((EditText)findViewById(R.id.reviewBox)).getText().toString();
+
+
+        if(name.equals(""))
+        {
+            Toast.makeText(this.getContext(),"이름을 입력해주세요",Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+        if(matchDate.equals(""))
+        {
+            Toast.makeText(this.getContext(),"경기 날짜를 입력해주세요",Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+        //MatchDto(String name,String clubName,int rank, int handy, int frontRubber, int backRubber, int winSet, int roseSet, String matchDate, String review)
+
+        this.matchDto = new MatchDto(name,clubName,rank,handy, handType, racketType,frontRubber,backRubber,winSet,roseSet,matchDate,review);
+        this.matchDto.setId(id);
+        return 1;
+
     }
 
     @Override
@@ -58,7 +138,7 @@ public class MatchRecordDialog extends Dialog implements  AdapterView.OnItemSele
         //클릭 리스너 셋팅 (클릭버튼이 동작하도록 만들어줌.)
         mPositiveButton.setOnClickListener(mPositiveListener);
         mNegativeButton.setOnClickListener(mNegativeListener);
-        mNegativeButton.setOnClickListener(mNetralListener);
+        mNetralButton.setOnClickListener(mNetralListener);
 
         handSpinner = (Spinner) findViewById(R.id.handType);
         fRubberSpinner = (Spinner)findViewById(R.id.front_rubber);
@@ -82,6 +162,19 @@ public class MatchRecordDialog extends Dialog implements  AdapterView.OnItemSele
         racketSpinner.setAdapter(racket_adapter);
 
         ((EditText)findViewById(R.id.et_nameBox)).setText(matchDto.getName());
+        ((EditText)findViewById(R.id.et_clubNameBox)).setText(matchDto.getClubName());
+        ((EditText)findViewById(R.id.et_rankBox)).setText(String.valueOf(matchDto.getRank()));
+        ((EditText)findViewById(R.id.et_handyScore)).setText(String.valueOf(matchDto.getHandy()));
+        ((Spinner)findViewById(R.id.handType)).setSelection(matchDto.getHandy());
+        ((Spinner)findViewById(R.id.racket_type)).setSelection(matchDto.getRacket_type());
+        ((Spinner)findViewById(R.id.front_rubber)).setSelection(matchDto.getFrontRubber());
+        ((Spinner)findViewById(R.id.back_rubber)).setSelection(matchDto.getBackRubber());
+        ((EditText)findViewById(R.id.win_set)).setText(String.valueOf(matchDto.getWinSet()));
+        ((EditText)findViewById(R.id.rose_set)).setText(String.valueOf(matchDto.getRoseSet()));
+        ((EditText)findViewById(R.id.matchDateBox)).setText(matchDto.getMatchDate());
+        ((EditText)findViewById(R.id.reviewBox)).setText(matchDto.getReview());
+
+
 
     }
 
