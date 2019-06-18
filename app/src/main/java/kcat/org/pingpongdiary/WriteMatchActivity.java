@@ -2,6 +2,7 @@ package kcat.org.pingpongdiary;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.annotation.RequiresPermission;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.QuickContactBadge;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Dictionary;
 
@@ -45,6 +48,9 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
     String review;
     Calendar m;
     MatchDao matchDao;
+
+    EditText etName;
+    ListView nameList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +67,27 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
         bRubberSpinner.setOnItemSelectedListener(this);
         racketSpinner.setOnItemSelectedListener(this);
 
+        etName = (EditText)findViewById(R.id.nameBox);
+        nameList = (ListView)findViewById(R.id.nameList);
+
+        ArrayAdapter nameAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1) ;
+        nameList.setAdapter(nameAdapter);
+        ArrayList<MatchDto> dataList =  matchDao.selectName();
+        for(MatchDto matchDto : dataList) {
+            nameAdapter.add(matchDto.getName());
+        }
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b == true)
+                {
+                    nameList.setVisibility(View.VISIBLE);
+                    Toast.makeText(WriteMatchActivity.this,"VISIBLE",Toast.LENGTH_SHORT).show();
+                }else{
+                    nameList.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,handTypeItem);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         handSpinner.setAdapter(adapter);
@@ -77,6 +104,8 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
         findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(WriteMatchActivity.this, MatchActivity.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -151,6 +180,9 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
                 }
 
                 Toast.makeText(WriteMatchActivity.this,"등록되었습니다.",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(WriteMatchActivity.this, MatchActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

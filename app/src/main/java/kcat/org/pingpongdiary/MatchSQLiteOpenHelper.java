@@ -62,6 +62,12 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
     {
         return db.update(table,values,"_id = ?",new String[]{String.valueOf(values.get("_id"))});
     }
+    public long delete(String table, ContentValues values)
+    {
+        return db.delete(table,"_id = ?", new String[]{String.valueOf(values.get("_id"))});
+    }
+
+
 
     public ArrayList<MatchDto> select(String s_name,int s_handType, int s_racketType, int s_fRubber, int s_bRubber ) {
         ArrayList<MatchDto> list = new ArrayList<MatchDto>();
@@ -74,9 +80,6 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
         //String sql= "SELECT * from MATCH_TABLE";
 
         //if(s_name!="")
-
-
-
         while (c.moveToNext()) {
             MatchDto matchDto = new MatchDto();
             int id = c.getInt(c.getColumnIndex("_id"));
@@ -122,6 +125,63 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
     }
 
+
+    public ArrayList<MatchDto> selectName( ) {
+        ArrayList<MatchDto> list = new ArrayList<MatchDto>();
+
+        db = instance.getReadableDatabase();
+
+//        Cursor c = db.query("MATCH_TABLE", null, null, null, null, null,
+//                "match_date desc", "10");
+
+        Cursor c = db.rawQuery("SELECT * from MATCH_TABLE GROUP BY name, club_name",null);
+        //String sql= "SELECT * from MATCH_TABLE";
+
+        //if(s_name!="")
+        while (c.moveToNext()) {
+            MatchDto matchDto = new MatchDto();
+            int id = c.getInt(c.getColumnIndex("_id"));
+            matchDto.setId(id);
+            String name = c.getString(c.getColumnIndex("name"));
+            matchDto.setName(name);
+
+            String clubMame = c.getString(c.getColumnIndex("club_name"));
+            matchDto.setClubName(clubMame);
+
+            int rank =  c.getInt(c.getColumnIndex("rank"));
+            matchDto.setRank(rank);
+            int handy = c.getInt(c.getColumnIndex("handy"));
+            matchDto.setHandy(handy);
+
+            int handType = c.getInt(c.getColumnIndex("hand_type"));
+            matchDto.setHandType(handType);
+
+            int racketType = c.getInt(c.getColumnIndex("racket_type"));
+            matchDto.setRacket_type(racketType);
+
+            int frontRubber = c.getInt(c.getColumnIndex("front_rubber"));
+            matchDto.setFrontRubber(frontRubber);
+
+            int backRubber = c.getInt(c.getColumnIndex("back_rubber"));
+            matchDto.setBackRubber(backRubber);
+
+            int winSet = c.getInt(c.getColumnIndex("win_set"));
+            matchDto.setWinSet(winSet);
+            int roseSet = c.getInt(c.getColumnIndex("rose_set"));
+            matchDto.setRoseSet(roseSet);
+            list.add(matchDto);
+
+            String writeDate = c.getString(c.getColumnIndex("match_date"));
+            matchDto.setMatchDate(writeDate);
+
+            String review = c.getString(c.getColumnIndex("review"));
+            matchDto.setReview(review);
+
+        }
+
+        return list;
+
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub

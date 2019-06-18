@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,7 +28,13 @@ public class MatchActivity extends AppCompatActivity {
     int winMatch;
     int roseMatch;
     MatchDto matchDto;
-    MatchRecordDialog matchRecordDialog;
+    int limitIndex = 10;
+
+    CheckBox leftHand;
+    CheckBox rightHand;
+    CheckBox jPenholder;
+    CheckBox shakeHand;
+    CheckBox cPenholder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,23 +46,31 @@ public class MatchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MatchActivity.this,WriteMatchActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
-        findViewById(R.id.delMatch).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.showMore).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListInit();
+                limitIndex += 5;
+                ListInit(limitIndex);
                 //Toast.makeText(MatchActivity.this,data.size()+"",Toast.LENGTH_SHORT).show();
             }
         });
 
-        ListInit();
+        leftHand = (CheckBox)findViewById(R.id.leftHand);
+        rightHand = (CheckBox)findViewById(R.id.rightHand);
+        jPenholder = (CheckBox)findViewById(R.id.jPenholder);
+        shakeHand = (CheckBox)findViewById(R.id.shakeHand);
+        cPenholder = (CheckBox)findViewById(R.id.cPenholder);
+
+
+        ListInit(10);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 matchDto = (MatchDto) adapterView.getItemAtPosition(i);
                 //Toast.makeText(getApplicationContext(), String.valueOf(matchDto.getId()),Toast.LENGTH_SHORT).show();
                 //matchRecordDialog = new MatchRecordDialog(MatchActivity.this,matchDto,positiveListener,negativeListener,netralListener);
@@ -66,52 +82,50 @@ public class MatchActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.searchBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limitIndex = 10;
+                ListInit(limitIndex);
+            }
+        });
     }
 
-    private View.OnClickListener positiveListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            if(matchRecordDialog.SaveData() == 0)
-            {
-
-            }else{
-
-                try {
-                    matchDao.update(matchRecordDialog.getMatchDto());
-                    Toast.makeText(getApplicationContext(), String.valueOf(matchRecordDialog.getMatchDto().getId()),Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getApplicationContext(), "수정 되었습니다.",Toast.LENGTH_SHORT).show();
-                } catch (SQLException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-
-                matchRecordDialog.dismiss();
-            }
-
-        }
-    };
-
-    private View.OnClickListener negativeListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            matchRecordDialog.dismiss();
-        }
-    };
-
-    private View.OnClickListener netralListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "삭제되었습니다.",Toast.LENGTH_SHORT).show();
-            matchRecordDialog.dismiss();
-        }
-    };
-
-
-
-    public void ListInit()
+    public void ListInit(int limitValue)
     {
+        winMatch = 0;
+        roseMatch = 0;
         ArrayList<MatchDto> dataList = matchDao.select( s_name, s_handType,  s_racketType,  s_fRubber,  s_bRubber );
         MyAdapter myAdapter= new MyAdapter();
+        int count = 0;
         for(MatchDto matchDto : dataList) {
             //   adapter.add("이름 : "+s.getName() + "세트 :"+s.getWinSet()+"승 "+ s.getRoseSet()+"패");
-            myAdapter.addItem(matchDto);
+
+            if(matchDto.getHandType() == 0 && !rightHand.isChecked())
+            {
+                continue;
+            }else if(matchDto.getHandType() == 1 && !leftHand.isChecked())
+            {
+                continue;
+            }
+
+            if(matchDto.getRacket_type() == 0 && !shakeHand.isChecked())
+            {
+                continue;
+            }else if(matchDto.getRacket_type() == 1 && !jPenholder.isChecked())
+            {
+                continue;
+            }else if(matchDto.getRacket_type() == 2 && !cPenholder.isChecked())
+            {
+                continue;
+            }
+
+            if(count < limitValue)
+            {
+                myAdapter.addItem(matchDto);
+                count++;
+            }
             if(matchDto.getWinSet() > matchDto.getRoseSet())
             {
                 winMatch++;

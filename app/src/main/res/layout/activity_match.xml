@@ -49,30 +49,35 @@
         app:layout_constraintTop_toBottomOf="@+id/searchLayout"
         android:layout_height="wrap_content">
         <CheckBox
+            android:id="@+id/leftHand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
             android:text="왼손"/>
         <CheckBox
+            android:id="@+id/rightHand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
             android:text="오른손"/>
         <CheckBox
+            android:id="@+id/jPenholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
             android:text="일펜"/>
         <CheckBox
+            android:id="@+id/shakeHand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:textSize="20sp"
             android:text="쉐이크"/>
         <CheckBox
+            android:id="@+id/cPenholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -182,11 +187,11 @@
             android:text="경기등록" />
 
         <Button
-            android:id="@+id/delMatch"
+            android:id="@+id/showMore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="경기삭제" />
+            android:text="더보기" />
     </LinearLayout>
 
 

@@ -46,6 +46,12 @@ public class MatchDao {
         list = db.select(s_name, s_handType, s_racketType, s_fRubber, s_bRubber);
         return list;
     }
+
+    public ArrayList<MatchDto> selectName(){
+        ArrayList<MatchDto> list = new ArrayList<MatchDto>();
+        list = db.selectName();
+        return list;
+    }
     public void update(MatchDto matchDto)throws SQLException {
         ContentValues values = new ContentValues();
 
@@ -69,9 +75,12 @@ public class MatchDao {
         }
     }
 
-    public int delete(int id)
+    public long delete(MatchDto matchDto)
     {
-        return db.delete(id);
+        ContentValues values = new ContentValues();
+
+        values.put("_id",matchDto.getId());
+        return db.delete("MATCH_TABLE",values);
     }
 
 

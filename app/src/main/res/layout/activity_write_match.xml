@@ -53,6 +53,7 @@
         android:layout_weight="1"
         />
 </LinearLayout>
+
     <LinearLayout
         android:id="@+id/clubNameLayout"
         android:layout_width="match_parent"
@@ -278,6 +279,15 @@
         android:gravity="top"
         />
 </LinearLayout>
+    <ListView
+        android:id="@+id/nameList"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/nameLayout"
+        android:background="#FF00BCD4"
+
+        android:layout_height="500dp">
+
+    </ListView>
 
 
 </android.support.constraint.ConstraintLayout>
