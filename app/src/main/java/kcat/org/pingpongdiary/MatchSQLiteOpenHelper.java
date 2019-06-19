@@ -118,13 +118,9 @@ public class MatchSQLiteOpenHelper extends SQLiteOpenHelper {
 
             String review = c.getString(c.getColumnIndex("review"));
             matchDto.setReview(review);
-
         }
-
         return list;
-
     }
-
 
     public ArrayList<MatchDto> selectName( ) {
         ArrayList<MatchDto> list = new ArrayList<MatchDto>();
