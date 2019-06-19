@@ -80,7 +80,15 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 MatchDto temp =  dataList.get(i);
                 ((EditText)findViewById(R.id.nameBox)).setText(temp.getName());
+                ((EditText)findViewById(R.id.clubNameBox)).setText(temp.getClubName());
+                ((EditText)findViewById(R.id.handyScore)).setText(String.valueOf(temp.getHandy()));
+                ((EditText)findViewById(R.id.rankBox)).setText(String.valueOf(temp.getRank()));
+                handSpinner.setSelection(temp.getHandType());
+                fRubberSpinner.setSelection(temp.getFrontRubber());
+                bRubberSpinner.setSelection(temp.getBackRubber());
+                racketSpinner.setSelection(temp.getRacket_type());
                 nameListLayout.setVisibility(View.INVISIBLE);
+
             }
         });
         dataList =  matchDao.selectName();
@@ -213,7 +221,7 @@ public class WriteMatchActivity extends AppCompatActivity implements AdapterView
             m.set(Calendar.MINUTE,minute);
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddkkmm");
-            Toast.makeText(WriteMatchActivity.this,hour+","+minute,Toast.LENGTH_LONG).show();
+//            Toast.makeText(WriteMatchActivity.this,hour+","+minute,Toast.LENGTH_LONG).show();
             ((EditText)findViewById(R.id.matchDateBox)).setText(sdf.format(m.getTime()));
         }
     };
