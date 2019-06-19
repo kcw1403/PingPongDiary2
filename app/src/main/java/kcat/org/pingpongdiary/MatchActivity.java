@@ -10,13 +10,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MatchActivity extends AppCompatActivity {
+public class MatchActivity extends AppCompatActivity implements Spinner.OnItemSelectedListener {
     private ListView listView;
     MatchDao matchDao;
     String s_name;
@@ -35,10 +37,26 @@ public class MatchActivity extends AppCompatActivity {
     CheckBox jPenholder;
     CheckBox shakeHand;
     CheckBox cPenholder;
+
+    Spinner fRubberSpinner;
+    Spinner bRubberSpinner;
+    String[] rubberTypeItem = new String[]{"상관없음","평면러버","숏핌플","롱핌플","안티러버"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
+
+        fRubberSpinner = (Spinner)findViewById(R.id.frontRubber);
+        bRubberSpinner = (Spinner)findViewById(R.id.backRubber);
+
+        fRubberSpinner.setOnItemSelectedListener(this);
+        bRubberSpinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> rubber_adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,rubberTypeItem);
+        rubber_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fRubberSpinner.setAdapter(rubber_adapter);
+        bRubberSpinner.setAdapter(rubber_adapter);
 
         matchDao = new MatchDao(this);
         findViewById(R.id.registerMatch).setOnClickListener(new View.OnClickListener() {
@@ -121,6 +139,20 @@ public class MatchActivity extends AppCompatActivity {
                 continue;
             }
 
+            if(fRubberSpinner.getSelectedItemPosition() != 0)
+            {
+                if(fRubberSpinner.getSelectedItemPosition() != matchDto.getFrontRubber()+1)
+                {
+                    continue;
+                }
+            }
+            if(bRubberSpinner.getSelectedItemPosition() != 0)
+            {
+                if(bRubberSpinner.getSelectedItemPosition() != matchDto.getBackRubber()+1)
+                {
+                    continue;
+                }
+            }
             if(count < limitValue)
             {
                 myAdapter.addItem(matchDto);
@@ -142,5 +174,15 @@ public class MatchActivity extends AppCompatActivity {
         tv_winRecord.setText(String.valueOf(winPercent)+"%");
         listView = (ListView)findViewById(R.id.matchList);
         listView.setAdapter(myAdapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

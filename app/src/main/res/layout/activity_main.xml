@@ -59,13 +59,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/managePlayer"
+        android:id="@+id/trainingBtn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="51dp"
-        android:text="선수관리"
+        android:text="트레이닝"
         android:textSize="30sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manageMatch" />
@@ -79,7 +79,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/managePlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/trainingBtn" />
 
 
 </android.support.constraint.ConstraintLayout>

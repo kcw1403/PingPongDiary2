@@ -15,9 +15,9 @@ import java.util.Calendar;
 
 public class MatchRecord extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
     Spinner handSpinner;
+    Spinner racketSpinner;
     Spinner fRubberSpinner;
     Spinner bRubberSpinner;
-    Spinner racketSpinner;
     String[] handTypeItem = new String[]{"오른손","왼손"};
     String[] rubberTypeItem = new String[]{"평면러버","숏핌플","롱핌플","안티러버"};
     String[] racketTypeItem = new String[]{"세이크","일펜","중펜"};
@@ -79,7 +79,7 @@ public class MatchRecord extends AppCompatActivity implements AdapterView.OnItem
         ((EditText)findViewById(R.id.clubNameBox)).setText(matchDto.getClubName());
         ((EditText)findViewById(R.id.rankBox)).setText(String.valueOf(matchDto.getRank()));
         ((EditText)findViewById(R.id.handyScore)).setText(String.valueOf(matchDto.getHandy()));
-        ((Spinner)findViewById(R.id.handType)).setSelection(matchDto.getHandy());
+        ((Spinner)findViewById(R.id.handType)).setSelection(matchDto.getHandType());
         ((Spinner)findViewById(R.id.racket_type)).setSelection(matchDto.getRacket_type());
         ((Spinner)findViewById(R.id.front_rubber)).setSelection(matchDto.getFrontRubber());
         ((Spinner)findViewById(R.id.back_rubber)).setSelection(matchDto.getBackRubber());
@@ -168,7 +168,6 @@ public class MatchRecord extends AppCompatActivity implements AdapterView.OnItem
                     Toast.makeText(MatchRecord.this,e.getMessage(),Toast.LENGTH_SHORT).show();
                     //e.printStackTrace();
                 }
-
                 Toast.makeText(MatchRecord.this,"수정되었습니다.",Toast.LENGTH_SHORT).show();
                 onBackPressed();
             }
