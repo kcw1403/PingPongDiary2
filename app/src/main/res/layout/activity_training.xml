@@ -24,14 +24,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="포핸드 롱 랠리"
+                android:text="포핸드 포핸드 랠리"
                 />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="백핸드 롱 랠리"
+                android:text="백핸드 백핸드 랠리"
                 />
         </LinearLayout>
 
@@ -44,19 +44,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="포핸드 롱 랠리"
+                android:text="화 백 전환 랠리"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="백 커트 랠리"
                 />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="백핸드 롱 랠리"
+                android:text="화 커트 랠리"
                 />
 
         </LinearLayout>
 
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="화 백 커트 전환 랠리"
+            />
+
+    </LinearLayout>
 
     </LinearLayout>
 
