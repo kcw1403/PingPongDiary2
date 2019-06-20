@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2F9D27"
     tools:context="kcat.org.pingpongdiary.MatchActivity">
 
 
@@ -20,7 +21,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="이름"
+            android:textStyle="bold"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:textSize="20sp" />
@@ -28,6 +31,8 @@
         <EditText
             android:layout_weight="2"
             android:layout_width="0dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:layout_height="wrap_content"
             android:hint="입력하세요"
 
@@ -53,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:text="왼손"/>
         <CheckBox
@@ -60,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:text="오른손"/>
         <CheckBox
@@ -67,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:text="일펜"/>
         <CheckBox
@@ -74,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:text="쉐이크"/>
         <CheckBox
@@ -81,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:text="중펜"/>
     </LinearLayout>
@@ -94,12 +104,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
             android:text="앞 러버"
             />
         <Spinner
             android:id="@+id/frontRubber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:layout_weight="1"
             />
         <TextView
@@ -107,12 +119,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="뒷 러버"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             />
         <Spinner
             android:id="@+id/backRubber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:layout_weight="1"
 
             />
@@ -128,6 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
             android:text="전적"
             />
 
@@ -137,6 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
             android:text="0승 0패 "
             />
         <TextView
@@ -144,6 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
             android:text="승률"
             />
         <TextView
@@ -153,6 +170,7 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:text="0%"
+            android:textColor="#FFFFFF"
             />
     </LinearLayout>
     <LinearLayout
@@ -165,6 +183,7 @@
         <ListView
             android:id="@+id/matchList"
             android:layout_width="match_parent"
+
             android:layout_height="500dp"
 
             android:scrollbars="vertical" />
