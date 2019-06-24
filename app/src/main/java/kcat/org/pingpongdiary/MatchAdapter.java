@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MyAdapter extends BaseAdapter {
+public class MatchAdapter extends BaseAdapter {
 
     private ArrayList<MatchDto> mItems = new ArrayList<>();
     @Override
@@ -37,14 +37,14 @@ public class MyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Context context = parent.getContext();
 
-        /* 'listview_custom' Layout을 inflate하여 convertView 참조 획득 */
+        /* 'listview_match' Layout을 inflate하여 convertView 참조 획득 */
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_custom, parent, false);
+            convertView = inflater.inflate(R.layout.listview_match, parent, false);
 
         }
 
-        /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
+        /* 'listview_match'에 정의된 위젯에 대한 참조 획득 */
 
         TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
         TextView tv_win = (TextView) convertView.findViewById(R.id.tv_win) ;

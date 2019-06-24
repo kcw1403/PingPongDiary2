@@ -7,15 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MatchActivity extends AppCompatActivity implements Spinner.OnItemSelectedListener {
@@ -115,7 +110,7 @@ public class MatchActivity extends AppCompatActivity implements Spinner.OnItemSe
         winMatch = 0;
         roseMatch = 0;
         ArrayList<MatchDto> dataList = matchDao.select( s_name, s_handType,  s_racketType,  s_fRubber,  s_bRubber );
-        MyAdapter myAdapter= new MyAdapter();
+        MatchAdapter matchAdapter = new MatchAdapter();
         int count = 0;
         for(MatchDto matchDto : dataList) {
             //   adapter.add("이름 : "+s.getName() + "세트 :"+s.getWinSet()+"승 "+ s.getRoseSet()+"패");
@@ -155,7 +150,7 @@ public class MatchActivity extends AppCompatActivity implements Spinner.OnItemSe
             }
             if(count < limitValue)
             {
-                myAdapter.addItem(matchDto);
+                matchAdapter.addItem(matchDto);
                 count++;
             }
             if(matchDto.getWinSet() > matchDto.getRoseSet())
@@ -173,7 +168,7 @@ public class MatchActivity extends AppCompatActivity implements Spinner.OnItemSe
 
         tv_winRecord.setText(String.valueOf(winPercent)+"%");
         listView = (ListView)findViewById(R.id.matchList);
-        listView.setAdapter(myAdapter);
+        listView.setAdapter(matchAdapter);
     }
 
     @Override

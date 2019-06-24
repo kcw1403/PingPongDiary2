@@ -37,7 +37,6 @@ public class MatchDao {
         if (rowId < 0) {
             throw new SQLException("Fail At Insert");
         }
-
     }
 
     public ArrayList<MatchDto> select(String s_name, int s_handType, int s_racketType, int s_fRubber, int s_bRubber) {
