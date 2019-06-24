@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.trainingBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( MainActivity.this, "준비중 입니다.",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this,TrainingActivity.class);
+                startActivity(i);
+//                Toast.makeText( MainActivity.this, "준비중 입니다.",Toast.LENGTH_SHORT).show();
             }
         });
 

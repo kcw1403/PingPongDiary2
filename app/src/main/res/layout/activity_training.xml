@@ -49,7 +49,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/beginner"
+                android:id="@+id/beginnerBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -57,14 +57,14 @@
                 />
 
             <Button
-                android:id="@+id/intermediate"
+                android:id="@+id/intermediateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="중급"
                 />
             <Button
-                android:id="@+id/expert"
+                android:id="@+id/expertBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -77,24 +77,27 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/training1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="크로스 랠리"
+                android:text="화/백\n 크로스 랠리"
                 />
 
             <Button
+                android:id="@+id/training2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="스트레이트 랠리"
+                android:text="화/백\n 스트레이트 랠리"
                 />
 
             <Button
+                android:id="@+id/training3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="화 백 전환 랠리"
+                android:text="화/백 전환 랠리"
                 />
         </LinearLayout>
 
@@ -106,23 +109,26 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/training4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="크로스 커트 랠리"
+                android:text="화/백\n크로스 커트 랠리"
                 />
 
             <Button
+                android:id="@+id/training5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="스트레이트 커트 \n랠리"
+                android:text="화/백 스트레이트\n커트 랠리"
                 />
             <Button
+                android:id="@+id/training6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="화 백 커트 전환 \n랠리"
+                android:text="화/백\n전환 커트 랠리"
                 />
         </LinearLayout>
 
@@ -139,6 +145,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/addBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -146,12 +153,14 @@
                 />
 
             <Button
+                android:id="@+id/deleteBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="삭제"
                 />
             <Button
+                android:id="@+id/startTrainingBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">PingPongDiary</string>
+    <string name="app_name">핑퐁 다이어리</string>
     <string name="title_activity_match">MatchActivity</string>
 </resources>
