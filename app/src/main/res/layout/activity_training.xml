@@ -77,7 +77,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp">
 
             <Button
                 android:id="@+id/training1"
@@ -92,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="화/백\n 스트레이트 랠리"
+                android:text="화/백\n 스트레이트"
                 />
 
             <Button
@@ -100,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="화/백 전환 랠리"
+                android:text="화/백 전환"
                 />
         </LinearLayout>
 
@@ -109,7 +109,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp">
 
             <Button
                 android:id="@+id/training4"
